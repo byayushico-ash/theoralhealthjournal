@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Privacy Policy | The Oral Health Journal</title>
+<meta name="description" content="How The Oral Health Journal collects, uses, and protects your information.">
+<meta name="robots" content="noindex, follow">
+
+<style>
+
+  /* ============================================================
+     DESIGN TOKENS
+     ============================================================ */
+  :root{
+    --paper:      #FBFAF6;   /* warm off-white page background */
+    --paper-dim:  #F3F1EA;   /* slightly deeper warm neutral for alt sections */
+    --ink:        #1E2A22;   /* deep forest-charcoal, primary text */
+    --ink-soft:   #4B564D;   /* secondary text */
+    --sage:       #4F7A63;   /* primary accent — soft, muted green */
+    --sage-deep:  #3C5F4C;   /* pressed / hover state */
+    --sage-tint:  #E7EFE8;   /* pale mint tint for cards & chips */
+    --sage-line:  #D6E3D8;   /* hairline borders on tint */
+    --clay:       #C98B6B;   /* small warm counterpoint, used sparingly */
+
+    --serif: ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+    --shadow-soft: 0 20px 60px -30px rgba(30,42,34,0.25);
+    --shadow-tiny: 0 8px 24px -12px rgba(30,42,34,0.18);
+    --maxw: 640px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  img,svg{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  section{ padding:72px 0; }
+  section.tint{ background:var(--paper-dim); }
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:500;
+    color:var(--ink);
+    margin:0 0 18px;
+    letter-spacing:-0.01em;
+  }
+  h1{ font-size:clamp(30px,7vw,40px); line-height:1.22; }
+  h2{ font-size:clamp(24px,6vw,30px); line-height:1.28; }
+  h3{ font-size:19px; line-height:1.4; }
+
+  p{ margin:0 0 16px; color:var(--ink-soft); font-size:16.5px; }
+  p.lead{ font-size:18px; color:var(--ink); }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:16px; height:1px;
+    background:var(--sage);
+    display:inline-block;
+  }
+
+  ul.check{ list-style:none; margin:0 0 20px; padding:0; }
+  ul.check li{
+    display:flex; gap:12px; align-items:flex-start;
+    color:var(--ink-soft); font-size:16px; margin-bottom:12px;
+  }
+  ul.check li svg{ flex:0 0 auto; margin-top:3px; }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    min-height:50px;
+    padding:14px 26px;
+    background:var(--sage);
+    color:#fff;
+    font-family:var(--sans);
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    text-decoration:none;
+    border:none;
+    border-radius:999px;
+    box-shadow:var(--shadow-tiny);
+    cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn:hover{ background:var(--sage-deep); box-shadow:0 14px 30px -14px rgba(60,95,76,0.55); transform:translateY(-1px); }
+  .btn:active{ transform:translateY(0); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--sage-deep);
+    box-shadow:none;
+    border:1.5px solid var(--sage-line);
+  }
+  .btn-ghost:hover{ background:var(--sage-tint); box-shadow:none; }
+  .btn-sub{ text-align:center; font-size:13px; color:var(--ink-soft); margin-top:12px; opacity:.85; }
+
+  /* Reveal-on-scroll */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:56px 0 60px;
+    text-align:center;
+  }
+  .hero .logo{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    margin-bottom:34px;
+  }
+  .logo-mark{ width:26px; height:26px; }
+  .logo-word{
+    font-family:var(--serif); font-size:17px; letter-spacing:0.02em; color:var(--ink);
+  }
+  /* PLACEHOLDER: Logo — replace .logo-mark svg and .logo-word text with brand logo */
+
+  .hero h1{ margin-bottom:20px; }
+  .hero p.lead{ max-width:480px; margin-left:auto; margin-right:auto; }
+  .hero-art{ margin:36px auto 34px; max-width:280px; }
+  .hero-actions{ margin-top:8px; }
+
+  /* ============ SECTION VISUALS ============ */
+  .art-frame{
+    background:var(--sage-tint);
+    border-radius:var(--radius-lg);
+    padding:30px 20px;
+    margin:28px 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .art-caption{
+    text-align:center;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:12px;
+    letter-spacing:0.01em;
+  }
+  .art-caption b{ color:var(--sage-deep); font-weight:600; }
+
+  /* Comparison card */
+  .compare{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+    margin:26px 0 8px;
+  }
+  .compare .card{
+    border-radius:var(--radius-md);
+    padding:22px 20px;
+    border:1.5px solid var(--sage-line);
+    background:#fff;
+  }
+  .compare .card.dim{ background:var(--paper-dim); border-color:#E7E4DA; }
+  .compare .card .tag{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border-radius:999px;
+    margin-bottom:12px;
+  }
+  .compare .card.dim .tag{ background:#EFECE3; color:#8A8574; }
+  .compare .card.accent .tag{ background:var(--sage-tint); color:var(--sage-deep); }
+  .compare .card h3{ margin-bottom:12px; font-size:17px; }
+  .compare .card p{ font-size:14.5px; margin-bottom:0; }
+  .compare .card ul.check li{ margin-bottom:9px; }
+  .compare .card ul.check li:last-child{ margin-bottom:0; }
+
+  /* Product intro card */
+  .product-card{
+    background:#fff;
+    border-radius:var(--radius-lg);
+    padding:28px 24px;
+    box-shadow:var(--shadow-soft);
+    margin:30px 0;
+    text-align:center;
+  }
+  .product-card img{
+    max-width:210px;
+    margin:0 auto 20px;
+  }
+  /* PLACEHOLDER: Product Image — replace src on .product-card img */
+
+  /* FAQ accordion */
+  .faq-item{
+    border-bottom:1px solid var(--sage-line);
+  }
+  .faq-item:first-child{ border-top:1px solid var(--sage-line); }
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:20px 4px;
+    font-family:var(--serif);
+    font-size:16.5px;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    cursor:pointer;
+  }
+  .faq-q .plus{
+    flex:0 0 auto;
+    width:22px; height:22px;
+    position:relative;
+  }
+  .faq-q .plus::before,.faq-q .plus::after{
+    content:"";
+    position:absolute;
+    background:var(--sage);
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    transition:transform .3s ease, opacity .3s ease;
+  }
+  .faq-q .plus::before{ width:14px; height:2px; }
+  .faq-q .plus::after{ width:2px; height:14px; }
+  .faq-item.open .plus::after{ transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .4s ease;
+  }
+  .faq-a p{ padding:0 4px 20px; font-size:15px; }
+
+  /* Footer */
+  footer{
+    padding:50px 0 40px;
+    background:var(--ink);
+    color:#C9D2CB;
+  }
+  footer .wrap{ }
+  footer h4{
+    font-family:var(--sans);
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#8FA396;
+    margin:0 0 8px;
+  }
+  footer .disc-block{ margin-bottom:26px; }
+  footer p{ color:#B7C1B9; font-size:13.5px; margin:0; }
+  footer .copyright{
+    margin-top:30px;
+    padding-top:24px;
+    border-top:1px solid #33443A;
+    font-size:12.5px;
+    color:#7C8C81;
+  }
+
+  /* Transition line */
+  .transition-line{
+    text-align:center;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+    color:var(--sage-deep);
+    max-width:420px;
+    margin:44px auto 0;
+    line-height:1.5;
+  }
+
+  @media (min-width:520px){
+    .compare{ grid-template-columns:1fr 1fr; }
+  }
+
+  /* ============================================================
+     ADDITIONS — inner/legal pages (topbar, prose, footer nav)
+     ============================================================ */
+  .topbar{ padding:26px 0 10px; }
+  .topbar .wrap{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .topbar .logo{
+    display:flex; align-items:center; gap:8px; text-decoration:none;
+  }
+  .topbar .logo-mark{ width:22px; height:22px; }
+  .topbar .logo-word{
+    font-family:var(--serif); font-size:15.5px; letter-spacing:0.02em; color:var(--ink);
+  }
+  .topbar .back{
+    font-family:var(--sans);
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--sage-deep);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .topbar .back:hover{ color:var(--sage); }
+
+  .page-hero{ padding:26px 0 8px; text-align:left; }
+  .page-hero h1{ font-size:clamp(28px,7vw,36px); margin-bottom:10px; }
+  .updated{
+    font-size:13px; color:var(--ink-soft); margin-bottom:0; opacity:.85;
+  }
+
+  .prose{ padding-top:8px; }
+  .prose h2{
+    font-size:19px; margin-top:38px; margin-bottom:12px;
+  }
+  .prose h2:first-child{ margin-top:0; }
+  .prose h3{
+    font-size:16.5px; margin-top:22px; margin-bottom:8px;
+  }
+  .prose p{ font-size:16px; }
+  .prose ul, .prose ol{
+    margin:0 0 18px; padding-left:20px; color:var(--ink-soft);
+  }
+  .prose li{ margin-bottom:8px; font-size:16px; }
+  .prose a{ color:var(--sage-deep); text-decoration:underline; text-underline-offset:2px; }
+  .prose a:hover{ color:var(--sage); }
+  .prose strong{ color:var(--ink); }
+
+  .contact-card{
+    background:#fff;
+    border:1.5px solid var(--sage-line);
+    border-radius:var(--radius-md);
+    padding:26px 22px;
+    margin:28px 0;
+  }
+  .contact-card .label{
+    font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--sage-deep); margin-bottom:6px;
+  }
+  .contact-card .value{
+    font-family:var(--serif); font-size:20px; color:var(--ink); word-break:break-word;
+  }
+  .contact-card + .contact-card{ margin-top:14px; }
+
+  .footer-nav{
+    display:flex; flex-wrap:wrap;
+    gap:10px 22px;
+    margin-bottom:28px;
+    padding-bottom:26px;
+    border-bottom:1px solid #33443A;
+    list-style:none;
+    padding-left:0;
+  }
+  .footer-nav a{
+    color:#C9D2CB; font-size:13.5px; text-decoration:none;
+  }
+  .footer-nav a:hover{ color:#fff; }
+  .footer-nav a.current{ color:#fff; font-weight:600; }
+
+  footer p a{ color:#C9D2CB; text-decoration:underline; text-underline-offset:2px; }
+  footer p a:hover{ color:#fff; }
+
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C8 2 5 5.5 5 10c0 5 3.5 9 7 12 3.5-3 7-7 7-12 0-4.5-3-8-7-8Z" stroke="#4F7A63" stroke-width="1.4"/>
+          <path d="M12 7v6" stroke="#4F7A63" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      <span class="logo-word">The Oral Health Journal</span>
+    </a>
+    <a href="index.html" class="back">← Back to article</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Legal</span>
+    <h1 class="reveal">Privacy Policy</h1>
+    <p class="updated reveal">Last updated: July 10, 2026</p>
+  </div>
+</section>
+
+<section class="prose">
+  <div class="wrap">
+
+    <p class="reveal">This Privacy Policy explains what information The Oral Health Journal collects when you visit this site, how it's used, and the choices available to you. We built this page to be as plain and readable as the rest of the site.</p>
+
+    <h2 class="reveal">Information we collect</h2>
+    <p class="reveal">We do not require visitors to create an account or submit personal information to read our content. Depending on how you use the site, we may collect:</p>
+    <ul class="reveal">
+      <li><strong>Usage data</strong> — such as pages viewed, time on page, device type, and general location, gathered automatically through analytics tools.</li>
+      <li><strong>Information you provide directly</strong> — such as your name and email address, if you choose to contact us.</li>
+      <li><strong>Advertising identifiers</strong> — if you arrive here through a Google Ads campaign, Google may associate limited, non-identifying click data with that ad for measurement purposes.</li>
+    </ul>
+
+    <h2 class="reveal">How we use information</h2>
+    <p class="reveal">Any information we collect is used to:</p>
+    <ul class="reveal">
+      <li>Understand which content is helpful, so we can improve the site</li>
+      <li>Respond to messages sent through our contact page</li>
+      <li>Measure the performance of advertising campaigns</li>
+      <li>Maintain the security and proper functioning of the site</li>
+    </ul>
+    <p class="reveal">We do not sell your personal information.</p>
+
+    <h2 class="reveal">Cookies &amp; tracking technologies</h2>
+    <p class="reveal">This site may use cookies and similar technologies (such as Google Analytics and Google Ads conversion tracking) to understand how visitors use the site and to measure advertising performance. Cookies are small text files stored on your device. You can disable cookies through your browser settings, though some site features may not function as intended if you do.</p>
+
+    <h2 class="reveal">Third-party links &amp; affiliate partners</h2>
+    <p class="reveal">This site contains links to third-party websites, including ProDentim's official website, as part of our affiliate partnerships. When you click an affiliate link and leave this site, that third-party site's own privacy policy governs any information you provide there — we encourage you to review it. We are not responsible for the privacy practices of external websites.</p>
+
+    <h2 class="reveal">Data security</h2>
+    <p class="reveal">We take reasonable steps to protect the information we collect, but no method of transmission over the internet is completely secure. We cannot guarantee absolute security of any data submitted to us.</p>
+
+    <h2 class="reveal">Children's privacy</h2>
+    <p class="reveal">This site is not directed at children under 13, and we do not knowingly collect personal information from children.</p>
+
+    <h2 class="reveal">Your choices</h2>
+    <p class="reveal">You can opt out of Google Analytics tracking using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>, and manage ad personalization through <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a>.</p>
+
+    <h2 class="reveal">Changes to this policy</h2>
+    <p class="reveal">We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date.</p>
+
+    <h2 class="reveal">Contact us</h2>
+    <p class="reveal">If you have questions about this Privacy Policy, you can reach us at <a href="mailto:hello@YOURDOMAIN.com">hello@YOURDOMAIN.com</a>.</p>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <ul class="footer-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="privacy.html" class="current">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="affiliate-disclosure.html">Affiliate Disclosure</a></li>
+          <li><a href="medical-disclaimer.html">Medical Disclaimer</a></li>
+    </ul>
+    <div class="disc-block">
+      <h4>Affiliate Disclosure</h4>
+      <p>This site may contain affiliate links, including links related to ProDentim. If you make a purchase through one of these links, we may earn a commission at no additional cost to you. Read the full <a href="affiliate-disclosure.html">Affiliate Disclosure</a>.</p>
+    </div>
+    <div class="disc-block">
+      <h4>Medical Disclaimer</h4>
+      <p>The content on this site is for educational purposes only and is not intended as medical advice, diagnosis, or treatment. Read the full <a href="medical-disclaimer.html">Medical Disclaimer</a>.</p>
+    </div>
+    <div class="copyright">© 2026 The Oral Health Journal. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  },{ threshold:0.1, rootMargin:'0px 0px -30px 0px' });
+  revealEls.forEach((el,i)=>{
+    el.style.transitionDelay = (i % 4) * 60 + 'ms';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
