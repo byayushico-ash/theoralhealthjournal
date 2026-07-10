@@ -297,6 +297,22 @@
   }
   footer .disc-block{ margin-bottom:26px; }
   footer p{ color:#B7C1B9; font-size:13.5px; margin:0; }
+  footer p a{ color:#C9D2CB; text-decoration:underline; text-underline-offset:2px; }
+  footer p a:hover{ color:#fff; }
+  .footer-nav{
+    display:flex; flex-wrap:wrap;
+    gap:10px 22px;
+    margin-bottom:28px;
+    padding-bottom:26px;
+    border-bottom:1px solid #33443A;
+    list-style:none;
+    padding-left:0;
+  }
+  .footer-nav a{
+    color:#C9D2CB; font-size:13.5px; text-decoration:none;
+  }
+  .footer-nav a:hover{ color:#fff; }
+  .footer-nav a.current{ color:#fff; font-weight:600; }
   footer .copyright{
     margin-top:30px;
     padding-top:24px;
@@ -547,6 +563,14 @@
      ============================================================ -->
 <footer>
   <div class="wrap">
+    <ul class="footer-nav">
+      <li><a href="index.html" class="current">Home</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms & Conditions</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="affiliate-disclosure.html">Affiliate Disclosure</a></li>
+      <li><a href="medical-disclaimer.html">Medical Disclaimer</a></li>
+    </ul>
     <div class="disc-block">
       <h4>Affiliate Disclosure</h4>
       <p>This article may contain affiliate links. If you choose to purchase through one of these links, we may earn a commission at no additional cost to you.</p>
